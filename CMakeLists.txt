@@ -68,3 +68,9 @@ add_executable(bencode_test src/parse/bencode.test.cpp)
 add_test(bencode_test bencode_test)
 # End of parsing
 
+# This is for main.cpp
+
+add_executable(main src/main.cpp)
+
+# End for main.cpp
+
