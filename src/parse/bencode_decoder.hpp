@@ -39,7 +39,7 @@ private:
 
     auto decode_string() -> std::pair<std::string, size_t>;
 
-    auto decode_integer() -> std::pair<int64_t, size_t>;
+    auto decode_integer() -> std::pair<uint64_t, size_t>;
 
     auto decode_list() -> std::pair<std::vector<std::any>, size_t>;
 

@@ -106,7 +106,7 @@ auto bencode_decoder::populate_bencode_object(bencode &obj, const std::map<std::
     {
         try
         {
-            obj.set_creation_date(static_cast<int>(std::any_cast<int64_t>(it->second)));
+            obj.set_creation_date(static_cast<int>(std::any_cast<uint64_t>(it->second)));
         }
         catch (const std::bad_any_cast &)
         {
@@ -178,7 +178,7 @@ auto bencode_decoder::populate_torrent_info(torrent_info &info, const std::map<s
     {
         try
         {
-            info.set_piece_length(static_cast<int>(std::any_cast<int64_t>(it->second)));
+            info.set_piece_length(static_cast<int>(std::any_cast<uint64_t>(it->second)));
         }
         catch (const std::bad_any_cast &)
         {
@@ -211,7 +211,7 @@ auto bencode_decoder::populate_torrent_info(torrent_info &info, const std::map<s
                 torrent_info::file f;
                 if (auto length_it = file_dict.find("length"); length_it != file_dict.end())
                 {
-                    f.length = static_cast<int>(std::any_cast<int64_t>(length_it->second));
+                    f.length = static_cast<uint64_t>(std::any_cast<uint64_t>(length_it->second));
                 }
                 if (auto path_it = file_dict.find("path"); path_it != file_dict.end())
                 {
@@ -294,7 +294,7 @@ auto bencode_decoder::decode_string() -> std::pair<std::string, size_t>
     return {value, pos};
 }
 
-auto bencode_decoder::decode_integer() -> std::pair<int64_t, size_t>
+auto bencode_decoder::decode_integer() -> std::pair<uint64_t, size_t>
 {
     pos++; 
     std::string number_str = read_until('e');

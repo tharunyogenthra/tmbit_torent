@@ -32,7 +32,7 @@ public:
 
     struct file
     {
-        int length;
+        uint64_t length;
         std::vector<std::string> path;
 
         auto to_string() const -> std::string;
