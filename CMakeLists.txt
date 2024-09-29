@@ -60,17 +60,22 @@ link_libraries(catch2_main)
 # -------------- DO NOT MODIFY ABOVE THIS LINE --------------- #
 # ------------------------------------------------------------ #
 
-# This is for parsing
-add_library(bencode_parsing src/parse/bencode.h src/parse/bencode.cpp)
+# This is for bencode file data class
+add_library(bencode_parsing src/parse/bencode_file.hpp src/parse/bencode_file.cpp)
 link_libraries(bencode_parsing)
+# End of bencode file data class
 
+# This is for bencode decoder class
+add_library(bencode_decoding src/parse/bencode_decoder.hpp src/parse/bencode_decoder.cpp)
+link_libraries(bencode_decoding)
+# End of bencode decoder class
+
+# This is for tests
 add_executable(bencode_test src/parse/bencode.test.cpp)
 add_test(bencode_test bencode_test)
-# End of parsing
+# End of tests
 
 # This is for main.cpp
-
 add_executable(main src/main.cpp)
-
 # End for main.cpp
 
